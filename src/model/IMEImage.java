@@ -26,6 +26,15 @@ public interface IMEImage {
   IMEImage toGreyScale(Pixel.GreyScaleType type, String id);
 
   /**
+   * Creates an image that is a mosaic of the original image.
+   *
+   * @param seeds The amount of shapes that make up the image.
+   * @param id The old image name.
+   * @return New IMEImage.
+   */
+  IMEImage mosaic(int seeds, String id);
+
+  /**
    * Flips this image horizontally.
    *
    * @return A new model with the flipped image

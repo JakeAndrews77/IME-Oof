@@ -53,6 +53,13 @@ public abstract class AbstractModel implements IMEModel {
   }
 
   @Override
+  public void mosaic(int delta, String fromId, String destId) {
+    IMEImage newImage = this.findWithID(fromId).mosaic(delta, destId);
+    this.removeDupeIDs(destId);
+    this.images.add(newImage);
+  }
+
+  @Override
   public ArrayList<String> getNames() {
     ArrayList<String> names = new ArrayList<>();
     for (IMEImage i : this.images) {

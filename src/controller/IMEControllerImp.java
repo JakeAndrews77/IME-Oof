@@ -54,7 +54,7 @@ public class IMEControllerImp implements IMEController {
 
       String command = inScan.next();
 
-      if (command.equals("brighten")) {
+      if (command.equals("brighten") || command.equals("mosaic")) {
         try {
           delta = Integer.parseInt(inScan.next());
         } catch (NumberFormatException n) {
@@ -106,6 +106,9 @@ public class IMEControllerImp implements IMEController {
           break;
         case "brighten":
           this.model.brighten(delta, imageName, destName);
+          break;
+        case "mosaic":
+          this.model.mosaic(delta, imageName, destName);
           break;
         case "blur":
           double[][] blurKernel = {{1.0 / 16, 1.0 / 8, 1.0 / 16},

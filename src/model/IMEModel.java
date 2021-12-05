@@ -54,6 +54,16 @@ public interface IMEModel {
   void brighten(int delta, String fromId, String destId);
 
   /**
+   * Makes a mosaic of the old image with the given amount of seeds.
+   * Saves result as a specified name and adds it to this model
+   *
+   * @param fromId id of the image to use
+   * @param destId id given to resultant image
+   * @param delta  Amount of seeds used to create the mosaic.
+   */
+  void mosaic(int delta, String fromId, String destId);
+
+  /**
    * Returns all the names of images in this model.
    *
    * @return the names of the images

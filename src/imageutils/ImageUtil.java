@@ -1,20 +1,20 @@
 package imageutils;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
-import java.io.FileInputStream;
-import java.awt.Color;
+
+import javax.imageio.ImageIO;
 
 import model.BaseImage;
 import model.IMEImage;
 import model.Pixel;
 import model.RGBPixel;
-
-import javax.imageio.ImageIO;
 
 /**
  * This class contains utility methods to read a PPM image from file and simply print its contents.
@@ -82,7 +82,7 @@ public class ImageUtil {
    * BufferedImage to an IMEImage.
    *
    * @param fileName  File to be read
-   * @param imageName Identifer to be assigned to the read image
+   * @param imageName Identifier to be assigned to the read image
    * @return An IME image using the RGB dats of the file provided with the specified name
    * @throws IOException throws an exception if the file is invalid.
    */
@@ -110,14 +110,13 @@ public class ImageUtil {
   public static void saveImage(IMEImage image, String fileName) throws IOException {
     String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
     BufferedImage outImage = ImageUtil.ime2BufferedImage(image);
-
+    System.out.println("we save");
     ImageIO.write(outImage, extension, new File(fileName));
   }
 
   protected static BufferedImage ime2BufferedImage(IMEImage image) {
     ArrayList<ArrayList<Pixel>> pixels = image.getAllPixels();
-    BufferedImage outImage = new BufferedImage(pixels.size(),
-            pixels.get(0).size(),
+    BufferedImage outImage = new BufferedImage(pixels.get(0).size(),pixels.size(),
             BufferedImage.TYPE_INT_RGB);
     for (int i = 0; i < pixels.size(); i++) {
       for (int j = 0; j < pixels.get(i).size(); j++) {
@@ -125,7 +124,7 @@ public class ImageUtil {
                 + 256 * pixels.get(i).get(j).getGreen() + pixels.get(i).get(j).getBlue());
       }
     }
-
+//load-image 066.jpg dog save-image dog.jpg dog
     return outImage;
   }
 }

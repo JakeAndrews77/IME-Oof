@@ -67,6 +67,11 @@ public class MockModel implements IMEModel {
     }
   }
 
+  @Override
+  public void mosaic(int delta, String fromId, String destId) {
+
+  }
+
 
   @Override
   public ArrayList<String> getNames() {

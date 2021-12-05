@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Abstraction of methods that should generally apply to a model of an image.
@@ -104,6 +105,52 @@ public abstract class AbstractImage implements IMEImage {
       pixel.set(i, pixel1d);
     }
     return this.createModel(id, pixel, ((int) Math.pow(2, this.bits)) - 1);
+  }
+
+  @Override
+  public IMEImage mosaic(int seeds, String id) {
+    ArrayList<ArrayList<Pixel>> pixel = new ArrayList<>();
+    ArrayList<Pixel> pixel1d = new ArrayList<>();
+
+    if (seeds >= this.pixels.size()*this.pixels.get(0).size()) {
+      throw new IllegalArgumentException("The number of seeds cannot exceed the resolution");
+    }
+
+    int[][] seedPositions = new int[seeds][2];
+
+    Random rand = new Random();
+
+    for (int i = 0; i < seeds; i++) {
+      seedPositions [i][0] = rand.nextInt(this.pixels.size());
+      seedPositions [i][1] = rand.nextInt(this.pixels.get(0).size());
+    }
+
+    for (int i = 0; i < this.pixels.size(); i++) {
+      pixel1d = new ArrayList<>();
+      for (int j = 0; j < this.pixels.get(i).size(); j++) {
+        pixel1d.add(j, getSeedColors(seedPositions, i, j));
+      }
+      pixel.add(i, pixel1d);
+    }
+
+    return this.createModel(id, pixel, ((int) Math.pow(2, this.bits)) - 1);
+  }
+// load-image dog.jpg dog mosaic 500 dog mosaic save-image mosaic.jpg mosaic
+  protected Pixel getSeedColors(int[][] seedPositions, int i, int j) {
+    int closeX = 0;
+    int closeY = 0;
+    double distance = Double.MAX_VALUE;
+    for (int[] seedPosition : seedPositions) {
+      double newDistance = Math.sqrt(Math.pow((i - seedPosition[0]),2)
+              + Math.pow((j - seedPosition[1]),2));
+      if (newDistance < distance) {
+        closeX = seedPosition[0];
+        closeY = seedPosition[1];
+        distance = newDistance;
+      }
+    }
+
+    return this.pixels.get(closeX).get(closeY);
   }
 
   @Override
