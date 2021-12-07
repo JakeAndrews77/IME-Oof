@@ -58,6 +58,7 @@ public class ControllerTest {
             "vertical-flip koala koalaHoVertFlip\n" +
             "horizontal-flip koala koalaVertHoFlip\n" +
             "brighten 50 koala koalaBrighten50\n" +
+            "mosaic 5000 koala koalaMosaic5000\n" +
             "blur koala koalaBlur\n" +
             "sharpen koala koalaSharp\n" +
             "greyscale koala koalaLuma\n" +
@@ -75,6 +76,7 @@ public class ControllerTest {
             "save-image res/koala-horizontal-vertical.png koalaHoVertFlip\n" +
             "save-image res/koala-vertical-horizontal.png koalaVertHoFlip\n" +
             "save-image res/koala-brighter-by-50.png koalaBrighten50\n" +
+            "save-image res/koala-mosaic-5000.png koalaMosaic5000\n" +
             "save-image res/koala-blur.png koalaBlur\n" +
             "save-image res/koala-sharpen.png koalaSharp\n" +
             "save-image res/koala-sepia.png koalaSepia");
@@ -196,6 +198,22 @@ public class ControllerTest {
             "koalaHoVertFlip\n" +
             "koalaVertHoFlip\n" +
             "koalaBrighten50\n" +
+            "Mosaic of image koala using 5000 seeds returned as koalaMosaic5000." +
+            "Image created: koalaMosaic5000\n" +
+            "Images in this session:\n" +
+            "koala\n" +
+            "koalaRed\n" +
+            "koalaGreen\n" +
+            "koalaBlue\n" +
+            "koalaValue\n" +
+            "koalaIntensity\n" +
+            "koalaLuma\n" +
+            "koalaHoFlip\n" +
+            "koalaVertFlip\n" +
+            "koalaHoVertFlip\n" +
+            "koalaVertHoFlip\n" +
+            "koalaBrighten50\n" +
+            "koalaMosaic5000\n" +
             "Image koala filtered returned as koalaBlur.\n" +
             "Kernel used:\n" +
             "[[0.0625, 0.125, 0.0625], [0.125, 0.25, 0.125], [0.0625, 0.125, 0.0625]\n" +

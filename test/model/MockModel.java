@@ -68,8 +68,13 @@ public class MockModel implements IMEModel {
   }
 
   @Override
-  public void mosaic(int delta, String fromId, String destId) {
-
+  public void mosaic(int numSeeds, String fromId, String destId) {
+    try {
+      ap.append(String.format("Mosaic of image %s using %d seeds returned as %s.\n",
+              fromId, numSeeds, destId));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
 

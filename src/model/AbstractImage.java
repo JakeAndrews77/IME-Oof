@@ -108,34 +108,39 @@ public abstract class AbstractImage implements IMEImage {
   }
 
   @Override
-  public IMEImage mosaic(int seeds, String id) {
-    ArrayList<ArrayList<Pixel>> pixel = new ArrayList<>();
-    ArrayList<Pixel> pixel1d = new ArrayList<>();
+  public IMEImage mosaic(int numSeeds, String id) {
+    ArrayList<ArrayList<Pixel>> pixels = new ArrayList<>();
 
-    if (seeds >= this.pixels.size()*this.pixels.get(0).size()) {
-      throw new IllegalArgumentException("The number of seeds cannot exceed the resolution");
+    if (numSeeds >= this.pixels.size()*this.pixels.get(0).size()) {
+      throw new IllegalArgumentException("The number of seeds cannot exceed the resolution.");
     }
 
-    int[][] seedPositions = new int[seeds][2];
-
+    int[][] seedPositions = new int[numSeeds][2];
     Random rand = new Random();
 
-    for (int i = 0; i < seeds; i++) {
+    for (int i = 0; i < numSeeds; i++) {
       seedPositions [i][0] = rand.nextInt(this.pixels.size());
       seedPositions [i][1] = rand.nextInt(this.pixels.get(0).size());
     }
 
     for (int i = 0; i < this.pixels.size(); i++) {
-      pixel1d = new ArrayList<>();
+      ArrayList<Pixel> pixels1d = new ArrayList<>();
       for (int j = 0; j < this.pixels.get(i).size(); j++) {
-        pixel1d.add(j, getSeedColors(seedPositions, i, j));
+        pixels1d.add(j, getSeedColors(seedPositions, i, j));
       }
-      pixel.add(i, pixel1d);
+      pixels.add(i, pixels1d);
     }
 
-    return this.createModel(id, pixel, ((int) Math.pow(2, this.bits)) - 1);
+    return this.createModel(id, pixels, ((int) Math.pow(2, this.bits)) - 1);
   }
-// load-image dog.jpg dog mosaic 500 dog mosaic save-image mosaic.jpg mosaic
+
+  /**
+   * For a pixel, get the closest out of the seed index-positions.
+   * @param seedPositions array of row/col position values for the seeds
+   * @param i row
+   * @param j column
+   * @return value of the seed position's corresponding pixel
+   */
   protected Pixel getSeedColors(int[][] seedPositions, int i, int j) {
     int closeX = 0;
     int closeY = 0;
@@ -149,7 +154,6 @@ public abstract class AbstractImage implements IMEImage {
         distance = newDistance;
       }
     }
-
     return this.pixels.get(closeX).get(closeY);
   }
 

@@ -1,3 +1,4 @@
+import imageutils.ImageUtil;
 import model.HistoGram;
 import org.junit.Test;
 
@@ -71,6 +72,23 @@ public abstract class AbstractImageTest {
     setActualImage("BrightenTest", "res/test-brighter-by-50.ppm");
 
     assertEquals(this.baseImage.brighten(50, "BrightenTest"), this.testImage);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testMosaicTooManySeeds() throws IOException {
+    IMEImage img = new ImageUtil().readAnyImage("dog.jpg", "dog");
+    IMEImage mosaicImg = img.mosaic(999999999, "dogMosaic");
+  }
+
+  @Test
+  public void testMosaic() throws IOException {
+    IMEImage img = new ImageUtil().readAnyImage("dog.jpg", "dog");
+    IMEImage mosaic500Img = img.mosaic(500, "dog500Mosaic");
+    IMEImage mosaic5000Img = img.mosaic(5000, "dog5000Mosaic");
+    new ImageUtil().saveImage(mosaic500Img, "dog-500-seed-mosaic.jpg");
+    new ImageUtil().saveImage(mosaic5000Img, "dog-5000-seed-mosaic.jpg");
+    assertEquals(img.mosaic(500, "dog500Mosaic"), mosaic500Img);
+    assertEquals(img.mosaic(5000, "dog5000Mosaic"), mosaic5000Img);
   }
 
   @Test
