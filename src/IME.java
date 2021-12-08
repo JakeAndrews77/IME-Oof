@@ -1,5 +1,10 @@
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+
+import javax.swing.*;
 
 import controller.IMEController;
 import controller.IMEControllerImp;
@@ -26,10 +31,16 @@ public class IME {
     IMEView view;
     Appendable sb = new StringBuilder();
 
+    // This is our additional code, not implemented by the providers, that allows the text version
+    // to be attempted to be run. The comment block of code below was originally uncommented, but
+    // throws an exception upon running it.
     Readable readable = new InputStreamReader(System.in);
     model = new Model();
-    controller = new IMEControllerImp(readable,new View(System.out,model),model);
+    controller = new IMEControllerImp(readable, new View(System.out, model), model);
     controller.runIME();
+
+    // The following code was originally uncommented by our providers, but was error prone so is
+    // left out of the program for the time being.
 
 
 //    if (args[0].equals("-file")) {
@@ -65,6 +76,7 @@ public class IME {
 //    } else {
 //      throw new IllegalArgumentException("invalid input");
 //    }
-
+//
+//  }
   }
 }

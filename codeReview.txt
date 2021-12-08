@@ -1,0 +1,36 @@
+Overall, the program achieves a solid demonstration of the technical aspects of image processing but
+leaves a moderate amount of room for growth in terms of design redundancy and execution-time
+error-handling.
+
+Design and implementation critique:
+
+     For every image processing operation, both the controller and model implementations require
+manual calls / switch-case blocks in addition to the direct functions in AbstractImage. This makes
+extendability difficult with respect to having to modify many files and, therefore, have access to
+all of them. Finally, the main function's program arguments threw an exception upon running it, the
+GUI was not available to run, and the text/script version of the program--though it would start
+after we modified the code in IME.java--would throw an exception upon entering a command.
+
+Documentation critique and design/code strengths:
+
+    There was missing documentation, such as within a README, USEME, or design diagram, that would
+otherwise give a high-level outline the project. There were a limited amount of thorough commenting,
+with some descriptions being more generic rather than summarizing any techniques e.g. that of
+AbstractImage, which read "Abstraction of methods that should generally apply to a model of an
+image," and these issues made understanding the codebase overall quite inconvenient. 0-to-1 argument
+functions such as sepia filtering and brightness altering are implemented with intuitive counted for
+loops for accessing each image of a pixel--additionally, their support of a filter method that uses
+a configurable kernel argument allows their design to be extendable to other filtering mechanisms.
+Code reuse is leveraged properly for structures such as complex pixel and image data.
+
+Design/code limitations and suggestions on how to address them:
+
+    To reduce repeated calls of the image manipulation functionality as well as simplify what needs
+to be edited upon feature extension, we suggest refactoring those methods into function objects that
+are accessible within a command-name linking hashmap. As for script-like command error handling in
+general, we recommend using a more precise condition-based approach to invalid inputs rather than
+using try-catch statements. This may provide more detailed error messages when certain edge cases--
+such as that of inserting a space between what should have been a spaceless string--are actively
+sought out to prevent; if time allows, manually testing a variety of bad input formats to the
+program during runtime may help to avoid a user stumbling upon these issues after, say, making a
+small typo.

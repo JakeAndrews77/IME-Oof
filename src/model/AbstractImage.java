@@ -148,6 +148,11 @@ public abstract class AbstractImage implements IMEImage {
     for (int[] seedPosition : seedPositions) {
       double newDistance = Math.sqrt(Math.pow((i - seedPosition[0]),2)
               + Math.pow((j - seedPosition[1]),2));
+//      if (newDistance == 0) {
+//        closeX = seedPosition[0];
+//        closeY = seedPosition[1];
+//        break;
+//      }
       if (newDistance < distance) {
         closeX = seedPosition[0];
         closeY = seedPosition[1];

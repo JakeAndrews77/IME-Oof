@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f13b5828-4811-4b67-bc58-2a33fe42c27b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/IME.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IME-Oof.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IME.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IME.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AbstractImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AbstractImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/AbstractImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AbstractImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/MockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/MockModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,16 +48,24 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jack\IntelliJ_Workspace\IME-Oof\res" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jack\IntelliJ_Workspace\IME-Oof" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.ControllerTest.testSmoothRun">
+  <component name="RunManager" selected="JUnit.BaseImageTest.testMosaic">
     <configuration name="IME" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="IME" />
       <module name="IME-Oof" />
+      <option name="PROGRAM_PARAMETERS" value="-jar Program.jar" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,13 +100,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.IME" />
+      <item itemvalue="JUnit.BaseImageTest.testMosaic" />
+      <item itemvalue="JUnit.BaseImageTest.testMosaicTooManySeeds" />
+      <item itemvalue="JUnit.ControllerTest.testSmoothRun" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ControllerTest.testSmoothRun" />
-        <item itemvalue="JUnit.BaseImageTest.testMosaicTooManySeeds" />
         <item itemvalue="JUnit.BaseImageTest.testMosaic" />
         <item itemvalue="JUnit.BaseImageTest.testMosaic" />
-        <item itemvalue="Application.IME" />
+        <item itemvalue="JUnit.BaseImageTest.testMosaic" />
+        <item itemvalue="JUnit.BaseImageTest.testMosaic" />
+        <item itemvalue="JUnit.BaseImageTest.testMosaic" />
       </list>
     </recent_temporary>
   </component>
@@ -118,7 +125,9 @@
       <option name="presentableId" value="Default" />
       <updated>1638851408423</updated>
       <workItem from="1638851410159" duration="1764000" />
-      <workItem from="1638853218886" duration="3402000" />
+      <workItem from="1638853218886" duration="6329000" />
+      <workItem from="1638934388758" duration="1400000" />
+      <workItem from="1638994193931" duration="3237000" />
     </task>
     <servers />
   </component>

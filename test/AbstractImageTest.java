@@ -3,11 +3,15 @@ import model.HistoGram;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 
 import model.IMEImage;
 import model.Pixel;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 /**
@@ -83,12 +87,28 @@ public abstract class AbstractImageTest {
   @Test
   public void testMosaic() throws IOException {
     IMEImage img = new ImageUtil().readAnyImage("dog.jpg", "dog");
-    IMEImage mosaic500Img = img.mosaic(500, "dog500Mosaic");
-    IMEImage mosaic5000Img = img.mosaic(5000, "dog5000Mosaic");
-    new ImageUtil().saveImage(mosaic500Img, "dog-500-seed-mosaic.jpg");
-    new ImageUtil().saveImage(mosaic5000Img, "dog-5000-seed-mosaic.jpg");
-    assertEquals(img.mosaic(500, "dog500Mosaic"), mosaic500Img);
-    assertEquals(img.mosaic(5000, "dog5000Mosaic"), mosaic5000Img);
+
+    // Manual check
+//    IMEImage mosaic500Img = img.mosaic(500, "dog500Mosaic");
+//    IMEImage mosaic5000Img = img.mosaic(5000, "dog5000Mosaic");
+//    new ImageUtil().saveImage(mosaic500Img, "dog-500-seed-mosai.jpg");
+//    new ImageUtil().saveImage(mosaic5000Img, "dog-5000-seed-mosai.jpg");
+
+    // Direct implementation check
+    ArrayList<Integer> seednumsList = new ArrayList<>(Arrays.asList(1, 100, 1000));
+    for (int seednum : seednumsList) {
+      IMEImage mosaicImg = img.mosaic(seednum, "dogMosaic");
+      ArrayList<ArrayList<Pixel>> pixels = mosaicImg.getAllPixels();
+      HashSet<Integer> uniqueColorSums = new HashSet<>();
+
+      for (ArrayList<Pixel> pixelRow : pixels) {
+        for (Pixel pixel : pixelRow) {
+          uniqueColorSums.add(pixel.getRed() + pixel.getBlue() + pixel.getGreen());
+        }
+      }
+      // Ensure that there are at most seednum unique RGB-color sums after mosaicking.
+      assertTrue(uniqueColorSums.size() <= seednum);
+    }
   }
 
   @Test
